@@ -3,12 +3,6 @@
 #include <string.h>
 
 typedef struct alumno{
-    //int identificador;
-    //char* primerApellido; //por que no queremos que esta definido(DINAMICO)
-    //char* segundoApellido;
-    //char* primerNombre;
-    //char* segundoNombre;
-
     char* nombreCompleto;
     int creditosAprobados;
     int semestreEquivalente;
@@ -20,25 +14,11 @@ typedef struct nodo{
 }Nodo;
 
 typedef Nodo* NodoPtr;
-//crear alumno
-// crear nodo 
-// insertar nodo ordenado creditos
-// imprimir lista 
-
-//*Alumno crearAlumno(*char, int, int); ok
-//void imprimirLista();
-// *Nodo crearNodo(*Alumno)
-//int insertarNodoOrdenadoCreditos(*nodo);
-//void imprimirLista();
-
 
 Alumno leer_Datos(char* nombreCompleto, int creditosAprobados, int semestreEquivalente);
 NodoPtr crearNodo(Alumno alum);
 void insertaOrdenado_matricula(NodoPtr *cabecera, NodoPtr nuevoPtr);
 void imprimeLista(NodoPtr actualPtr);
-
-
-
 
 
 int main(int argc, char const *argv[]){
@@ -64,11 +44,7 @@ int main(int argc, char const *argv[]){
     insertaOrdenado_matricula(&cabecera, cuarto_nodo);
     insertaOrdenado_matricula(&cabecera, quinto_nodo);
     
-    
-    
     imprimeLista(cabecera);
-    
-    
     return 0;
 }
 
@@ -85,9 +61,9 @@ Alumno leer_Datos(char* nombreCompleto, int creditosAprobados, int semestreEquiv
 NodoPtr crearNodo(Alumno alum){
 	NodoPtr nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
 
-    nuevoNodo->Alumno.nombreCompleto = alum.nombreCompleto;
+    	nuevoNodo->Alumno.nombreCompleto = alum.nombreCompleto;
 	nuevoNodo->Alumno.creditosAprobados = alum.creditosAprobados;
-    nuevoNodo->Alumno.semestreEquivalente = alum.semestreEquivalente;
+    	nuevoNodo->Alumno.semestreEquivalente = alum.semestreEquivalente;
 	nuevoNodo->siguientePtr = NULL;
 
 	return nuevoNodo;
