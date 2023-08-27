@@ -15,16 +15,7 @@ typedef struct nodo{
 
 typedef Nodo* NodoPtr;
 typedef Alumno* AlumnoPtr;
-//crear alumno
-// crear nodo 
-// insertar nodo ordenado creditos
-// imprimir lista 
 
-//*Alumno crearAlumno(*char, int, int); ok
-//void imprimirLista();
-// *Nodo crearNodo(*Alumno)
-//int insertarNodoOrdenadoCreditos(*nodo);
-//void imprimirLista();
 
 
 AlumnoPtr crearAlumno(char* nombreCompleto, int creditosAprobados, int semestreEquivalente);
@@ -34,7 +25,9 @@ NodoPtr crearNodo(AlumnoPtr alum);
 int insertaOrdenado_matricula(NodoPtr *cabecera, NodoPtr nuevoPtr);
 void imprimeLista(NodoPtr actualPtr);
 
-
+void liberarMemoria(NodoPtr actualPtr);
+void imprimirDireccionEstructura(AlumnoPtr alum);
+void imprimirDireccionNodo(NodoPtr nodo);
 
 
 
@@ -76,9 +69,13 @@ int main(int argc, char const *argv[]){
     insertaOrdenado_matricula(&cabecera, cuarto_nodo);
     insertaOrdenado_matricula(&cabecera, quinto_nodo);
     
+    
     imprimeLista(cabecera);
-    
-    
+
+    printf("\n");
+    imprimirAlumno(cuarto_nodo);
+
+    liberarMemoria(cabecera);
     return 0;
 }
 
@@ -101,14 +98,15 @@ AlumnoPtr crearAlumno(char* nombreCompleto, int creditosAprobados, int semestreE
 }
 
 
-
-
 NodoPtr crearNodo(AlumnoPtr alum){
 	NodoPtr nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
 
-    nuevoNodo->Alumno.nombreCompleto = alum.nombreCompleto;
-	nuevoNodo->Alumno.creditosAprobados = alum.creditosAprobados;
-    nuevoNodo->Alumno.semestreEquivalente = alum.semestreEquivalente;
+    // Forma alternativa de asignar valores
+    //nuevoNodo->Alumno.nombreCompleto = alum->nombreCompleto;
+	//nuevoNodo->Alumno.creditosAprobados = alum->creditosAprobados;
+    //nuevoNodo->Alumno.semestreEquivalente = alum->semestreEquivalente;
+
+    nuevoNodo->Alumno = *alum;
 	nuevoNodo->siguientePtr = NULL;
 
 	return nuevoNodo;
@@ -170,7 +168,4 @@ void liberarMemoria(NodoPtr actualPtr){
         actualPtr = actualPtr->siguientePtr;
     }
 }
-
-
-
 
