@@ -14,6 +14,7 @@ typedef struct nodo{
 }Nodo;
 
 typedef Nodo* NodoPtr;
+typedef Alumno* AlumnoPtr;
 //crear alumno
 // crear nodo 
 // insertar nodo ordenado creditos
